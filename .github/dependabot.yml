@@ -1,0 +1,20 @@
+version: 2
+registries:
+  python-shopify:
+    type: python-index
+    url: https://pkgs.shopify.io/basic/data/python/simple
+    username: "token"
+    password: ${{secrets.PYTHON_CLOUDSMITH_TOKEN}}
+  github-com:
+    type: git
+    url: https://github.com
+    username: ${{secrets.DEPENDENCIES_GITHUB_USER}}
+    password: ${{secrets.DEPENDENCIES_GITHUB_TOKEN}}
+updates:
+  - package-ecosystem: pip
+    directory: "/" # change this path if requirements file is not in root directory
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 100
+    insecure-external-code-execution: allow
+    registries: "*"

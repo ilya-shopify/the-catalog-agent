@@ -1,0 +1,6 @@
+name: the-catalog-agent
+
+type: python
+
+up:
+  - uv
